@@ -1,12 +1,30 @@
 import { getProducts } from "./api.js";
 
 const productsUl = document.getElementById('product-list');
+const sortSelect = document.getElementById('product-sort');
+const filterSelect = document.getElementById('product-filter');
+
+sortSelect.addEventListener('change', renderProducts);
+filterSelect.addEventListener('change', renderProducts);
 
 async function renderProducts() {
     const products = await getProducts();
     console.log(products);
 
-    const html = products.map(product => `
+    products.forEach(product => {
+        console.log(product);
+    });
+
+    const html = products.filter((product) => {
+            if (filterSelect.value === 'all') {
+                return true;
+            }
+            return product.category === filterSelect.value;
+        })
+        .sort((a, b) => (sortSelect.value==='Low')?
+        a.price - b.price :
+        b.price - a.price)
+        .map(product => `
         <li class="product-list">
             <h3>${product.title}</h3>
             <p>${product.description}</p>
