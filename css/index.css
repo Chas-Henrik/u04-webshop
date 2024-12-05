@@ -6,9 +6,20 @@
     padding: 0;
 }
 
+dialog {
+    margin: auto;
+    min-height: 50%;
+    min-width: 100%;
+    padding: 2rem;
+}
+
 html {
     font-size: 62.5%;
     font-family: "Poppins", sans-serif;
+}
+
+body {
+    font-size: 1.6rem;
 }
 
 #product-list {
@@ -27,4 +38,22 @@ html {
 
 .add-btn {
     
+}
+
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-item-title {
+    font-weight: 600;
+    max-width: 60%;
+    margin-right: auto;
+}
+
+.cart-item-qty {
+    width: fit-content;
+    height: fit-content;
 }

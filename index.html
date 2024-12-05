@@ -11,6 +11,7 @@
     <script type="module" src="./js/index.js"></script>
 </head>
 <body>
+    <button id="show-cart-btn">Show cart</button>
     <h3>Sort by</h3>
     <select name="sort" id="product-sort">
         <option value="High">High</option>
@@ -24,7 +25,13 @@
         <option value="men's clothing">men's clothing</option>
         <option value="women's clothing">women's clothing</option>
     </select>
-    <ul id="cart"></ul>
     <div id="product-list"></div>
+    
+    <dialog id="cart-modal">
+        <button id="close-cart-btn">Close</button>
+        <h2>Cart</h2>
+        <div id="cart"></div>
+        <p>Total: <div id="cart-total-price">$0</div></p>
+    </dialog>
 </body>
 </html>
