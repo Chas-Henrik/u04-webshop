@@ -6,7 +6,7 @@ const filterSelect = document.getElementById('product-filter');
 const cartElement = document.getElementById("cart");
 const showCartBtn = document.getElementById("show-cart-btn");
 const cartModal = document.getElementById("cart-modal");
-const closeCartBtn = document.getElementById("close-cart-btn");
+const cartBtnClose = document.getElementById("cart-btn-close");
 const totalPriceLabel = document.getElementById("cart-total-price");
 
 let products = [];
@@ -15,7 +15,7 @@ let cart = [];
 sortSelect.addEventListener('change', renderProducts);
 filterSelect.addEventListener('change', renderProducts);
 showCartBtn.addEventListener('click', showCart);
-closeCartBtn.addEventListener('click', closeCart);
+cartBtnClose.addEventListener('click', closeCart);
 
 function showCart() {
     cartModal.showModal();
@@ -88,21 +88,29 @@ function addToCart(e) {
 }
 
 function renderCart() {
+    const cartHeader = `
+        <div class="cart-header">
+            <p class="cart-header-delete"></p>
+            <p class="cart-header-title">Title</p>
+            <p class="cart-header-price">Price</p>
+            <p class="cart-header-qty">Qty</p>
+            <p class="cart-header-total">Total</p>
+        </div>`;
     const cartHTML = cart.map(product => `
         <div data-id="${product.id}" class="cart-item">
+            <button class="cart-item-btn-remove">X</button>
             <div class="cart-item-title">${product.title}</div>
             <div class="cart-item-price">$${product.price}</div>
             <input class="cart-item-qty" type="number" value="${product.qty}">
-            <div class="cart-item">$${(product.price * product.qty).toFixed(2)}</div>
-            <button class="remove-from-cart-btn">X</button>
+            <div class="cart-item-total">$${(product.price * product.qty).toFixed(2)}</div>
         </div>
     `).join("");
 
     const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
     // console.log(totalPrice);
 
-    totalPriceLabel.textContent = totalPrice;
-    cartElement.innerHTML = cartHTML;
+    totalPriceLabel.textContent = `$${totalPrice.toFixed(2)}`;
+    cartElement.innerHTML = cartHeader + cartHTML;
 
     cartElement.addEventListener("change", (e) => {
         if(e.target.classList.contains("cart-item-qty")) {
@@ -114,7 +122,7 @@ function renderCart() {
         }
     });
 
-    const RemoveBtns = cartElement.querySelectorAll(".remove-from-cart-btn");
+    const RemoveBtns = cartElement.querySelectorAll(".cart-item-btn-remove");
 
     RemoveBtns.forEach(btn => {
         btn.addEventListener("click", (e) => {
