@@ -18,6 +18,7 @@ showCartBtn.addEventListener('click', showCart);
 cartBtnClose.addEventListener('click', closeCart);
 
 function showCart() {
+    renderCart();
     cartModal.showModal();
 }
 
@@ -83,7 +84,6 @@ function addToCart(e) {
     }
 
     qtyInput.value = 1;
-    renderCart();
     // console.log(e.target.dataset.id);
 }
 
