@@ -46,7 +46,7 @@ async function renderProducts() {
             <h3>${product.title}</h3>
             <p>${product.description}</p>
             <p>$${product.price}</p>
-            <input type="number" value="1" min="1">
+            <input type="number" value="1" min="1" placeholder="Qty">
             <button data-id="${product.id}" class="add-btn">Add to Cart</button>
         </article>
     `).join("");
@@ -101,7 +101,7 @@ function renderCart() {
             <button class="cart-item-btn-remove">X</button>
             <div class="cart-item-title">${product.title}</div>
             <div class="cart-item-price">$${product.price}</div>
-            <input class="cart-item-qty" type="number" value="${product.qty}">
+            <input class="cart-item-qty" type="number" placeholder="Qty" value="${product.qty}">
             <div class="cart-item-total">$${(product.price * product.qty).toFixed(2)}</div>
         </div>
     `).join("");
