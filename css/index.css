@@ -80,11 +80,11 @@ body {
     width: 2rem;
 }
 
-.cart-header-title, .cart-header-qty {
+.cart-header-title {
     text-align: left;
 }
 
-.cart-header-price, .cart-header-total {
+.cart-header-price, .cart-header-qty, .cart-header-total {
     text-align: right;
 }
 
