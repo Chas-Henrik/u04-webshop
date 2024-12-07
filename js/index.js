@@ -1,3 +1,4 @@
+import { getCartLocalStorage, saveCartLocalStorage } from "./ls.js";
 import { getProducts } from "./api.js";
 
 const productsUl = document.getElementById('product-list');
@@ -10,8 +11,9 @@ const cartBtnClose = document.getElementById("cart-btn-close");
 const totalPriceLabel = document.getElementById("cart-total-price");
 
 let products = [];
-let cart = [];
+let cart = getCartLocalStorage();
 
+document.addEventListener("DOMContentLoaded", renderCart);
 sortSelect.addEventListener('change', renderProducts);
 filterSelect.addEventListener('change', renderProducts);
 showCartBtn.addEventListener('click', showCart);
@@ -72,7 +74,7 @@ function addToCart(e) {
     const existingCartItem = findCartItemById(product.id);
 
     if (existingCartItem) {
-        existingCartItem.qty += parseInt(qtyInput.value);
+        existingCartItem.qty = parseInt(existingCartItem.qty) + parseInt(qtyInput.value);
     } else {
         const productItem = { 
             id: product.id,
@@ -81,6 +83,7 @@ function addToCart(e) {
             qty: parseInt(qtyInput.value)
         };
         cart.push(productItem);
+        saveCartLocalStorage(cart);
     }
 
     qtyInput.value = 1;
@@ -118,6 +121,7 @@ function renderCart() {
             const cartItem = findCartItemById(id);
 
             cartItem.qty = e.target.value;
+            saveCartLocalStorage(cart);
             renderCart();
         }
     });
@@ -130,6 +134,7 @@ function renderCart() {
             const index = cart.findIndex(item => item.id == id);
             console.log(index);
             cart.splice(index, 1);
+            saveCartLocalStorage(cart);
             renderCart();
         });
     });
