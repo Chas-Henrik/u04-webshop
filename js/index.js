@@ -119,6 +119,7 @@ function renderCart() {
         if(e.target.classList.contains("cart-item-qty")) {
             const id = e.target.parentElement.dataset.id;
             const cartItem = findCartItemById(id);
+            e.target.removeEventListener("change");
 
             cartItem.qty = e.target.value;
             saveCartLocalStorage(cart);
