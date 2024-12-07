@@ -41,7 +41,7 @@ async function renderProducts() {
         b.price - a.price)
         .map(product => `
         <article class="product">
-            <img class="product-img" src="${product.image}" alt="${product.title}">
+            <div class="product-img"><img src="${product.image}" alt="${product.title}"></div>
             <div class="product-title">${product.title}</div>
             <div class="product-description">${product.description}</div>
             <div class="product-price">$${product.price}</div>
