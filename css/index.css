@@ -107,6 +107,7 @@ body {
 }
 
 .cart-item-title {
+    min-width: 15rem;
     font-weight: 600;
     margin-right: auto;
 }
