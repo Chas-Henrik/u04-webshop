@@ -9,6 +9,7 @@ const showCartBtn = document.getElementById("show-cart-btn");
 const cartModal = document.getElementById("cart-modal");
 const cartBtnClose = document.getElementById("cart-btn-close");
 const totalPriceLabel = document.getElementById("cart-total-price");
+const checkoutbtn = document.getElementById("checkout-btn")
 
 let products = [];
 let cart = getCartLocalStorage();
@@ -143,6 +144,22 @@ function qtyChanged(e) {
         saveCartLocalStorage(cart);
         renderCart();
     }
+}
+
+checkoutbtn.addEventListener("click", checkout)
+
+function checkout() {
+    if (cart.length != 0) {
+    alert ("Your purchase was successful!");
+    alert ("Your items are on their way to you now!");
+    cart.length = 0;
+    console.log (cart)
+    saveCartLocalStorage(cart);
+    renderCart();
+    } else {
+        alert ("Shopping cart empty!")
+    }
+    
 }
 
 renderProducts();
