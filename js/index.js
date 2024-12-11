@@ -105,7 +105,7 @@ function renderCart() {
             <button class="cart-item-btn-remove">X</button>
             <div class="cart-item-title">${product.title}</div>
             <div class="cart-item-price">$${product.price}</div>
-            <input class="cart-item-qty" type="number" placeholder="Qty" value="${product.qty}">
+            <input class="cart-item-qty" type="number" placeholder="Qty" min="0" value="${product.qty}">
             <div class="cart-item-total">$${(product.price * product.qty).toFixed(2)}</div>
         </div>
     `).join("");
