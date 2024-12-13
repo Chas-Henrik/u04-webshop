@@ -26,6 +26,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+    padding-top: 8rem;
 }
 
 .product {
@@ -125,3 +126,34 @@ body {
     text-align: right;
 }
 
+.header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #f0eaea;
+    border-bottom: 2px solid black;
+}
+
+.header-filters {
+    display: flex;
+
+}
+
+.header-cart {
+    margin: 2rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.header-filters h3{
+    margin: 2rem;
+}
+
+.header-filters select{
+    margin: 2rem;
+}
+
+#show-cart-btn {
+    width: 3rem;
+}

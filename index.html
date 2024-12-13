@@ -22,20 +22,29 @@
     
 </head>
 <body>
-    <button id="show-cart-btn">Show cart</button>
-    <h3>Sort by Price</h3>
-    <select name="sort" id="product-sort" title="Sort by Price">
-        <option value="High">High</option>
-        <option value="Low">Low</option>
-    </select>
-    <h3>Filter by Product Category</h3>
-    <select name="status" id="product-filter" title="Filter by Product Category">
-        <option value="all">All</option>
-        <option value="electronics">electronics</option>
-        <option value="jewelery">jewelery</option>
-        <option value="men's clothing">men's clothing</option>
-        <option value="women's clothing">women's clothing</option>
-    </select>
+    <header class="header">
+        <div class="header-filters">
+            <h3>Sort by Price</h3>
+            <select name="sort" id="product-sort" title="Sort by Price">
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+            </select>
+            <h3>Filter by Product Category</h3>
+            <select name="status" id="product-filter" title="Filter by Product Category">
+                <option value="all">All</option>
+                <option value="electronics">electronics</option>
+                <option value="jewelery">jewelery</option>
+                <option value="men's clothing">men's clothing</option>
+                <option value="women's clothing">women's clothing</option>
+            </select>
+        </div>
+        <div class="header-cart">
+            <img src="./img/shoppingcart.png" alt="shopping cart icon" id="show-cart-btn"></img>
+        </div>
+    </header>
+
+    
+   
     <div id="product-list"></div>
     
     <dialog id="cart-modal">
