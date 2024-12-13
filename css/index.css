@@ -141,7 +141,9 @@ body {
 }
 
 .header-cart {
-    padding: 2rem;
+    margin: 2rem;
+    height: 3rem;
+    cursor: pointer;
 }
 
 .header-filters h3{
@@ -150,4 +152,8 @@ body {
 
 .header-filters select{
     margin: 2rem;
+}
+
+#show-cart-btn {
+    width: 3rem;
 }
