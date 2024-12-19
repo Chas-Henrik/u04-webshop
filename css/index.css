@@ -6,16 +6,16 @@
     padding: 0;
 }
 
-dialog {
-    margin: auto;
-    min-height: 50%;
-    min-width: 100%;
-    padding: 2rem;
-}
-
 html {
     font-size: 62.5%;
     font-family: "Poppins", sans-serif;
+}
+
+dialog {
+    margin: auto;
+    min-height: 50%;
+    max-width: 130rem;
+    padding: 2rem;
 }
 
 body {
@@ -96,19 +96,118 @@ body {
 }
 
 
-.cart-item {
-    display: flex;
+.align-right {
+    margin-top: 1rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+.cart-heading {
+    margin: 1rem 0;
+}
+
+.cart-item-btn-remove {
+    font-weight: 500;
+    padding: 0.125rem 0.25rem;
+}
+
+.cart-item-btn-remove:hover {
+    cursor: pointer;
+}
+
+.cart-header, .cart-item {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: fit-content(5%) 1fr minmax(8rem, max-content) 5rem minmax(10rem, max-content);
     align-items: center;
     gap: 1rem;
 }
 
-.cart-item-title {
+.cart-header {
+    border-bottom: 1px solid #CCC;
+}
+
+.cart-header > * {
+    font-style:italic;
+}
+
+.cart-header-delete {
+    width: 2rem;
+}
+
+.cart-header-title {
+    text-align: left;
+}
+
+.cart-header-price, .cart-header-qty, .cart-header-total {
+    text-align: right;
+}
+
+.cart-item:last-child {
+    border-bottom: 1px solid #CCC;
+}
+
+#cart-btn-close {
+    margin: 2rem;
+    padding: 0.5rem 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
     font-weight: 600;
-    max-width: 60%;
+    font-size: 2rem;
+}
+
+#cart-btn-close:hover {
+    cursor: pointer;
+}
+
+.cart-item-title {
+    min-width: 15rem;
+    font-weight: 600;
     margin-right: auto;
 }
 
 .cart-item-qty {
-    width: fit-content;
+    width: 5rem;
     height: fit-content;
+    font-weight: 500;
+}
+
+.cart-item-price, .cart-item-total {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    text-align: right;
+}
+
+.header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #f0eaea;
+    border-bottom: 2px solid black;
+}
+
+.header-filters {
+    display: flex;
+
+}
+
+.header-cart {
+    margin: 2rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.header-filters h3{
+    margin: 2rem;
+}
+
+.header-filters select{
+    margin: 2rem;
+}
+
+#show-cart-btn {
+    width: 3rem;
 }
