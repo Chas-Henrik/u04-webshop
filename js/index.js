@@ -11,12 +11,14 @@ const cartBtnClose = document.getElementById("cart-btn-close");
 const totalPriceLabel = document.getElementById("cart-total-price");
 const checkoutbtn = document.getElementById("checkout-btn")
 
+
 let products = [];
 let cart = getCartLocalStorage();
 
 document.addEventListener("DOMContentLoaded", renderCart);
 sortSelect.addEventListener('change', renderProducts);
 filterSelect.addEventListener('change', renderProducts);
+filterSelect.addEventListener('change', filterChanged);
 showCartBtn.addEventListener('click', showCart);
 cartBtnClose.addEventListener('click', closeCart);
 
@@ -28,7 +30,6 @@ function showCart() {
 function closeCart() {
     cartModal.close();
 }
-
 
 async function renderProducts() {
     products = await getProducts();
@@ -57,8 +58,55 @@ async function renderProducts() {
     // console.log(html);
     productsUl.innerHTML = html;
     const addBtns = document.querySelectorAll(".add-btn")
-
+    
     addBtns.forEach(btn => btn.addEventListener("click", addToCart))
+}
+
+function filterChanged(e) {
+    const element = e.target; 
+    switch(element.value){
+        case 'All' : 
+            gtag('filter_changed_all', 'changed', {
+            'event_category': 'interactions on filter',
+            'event_label': 'changing filter to all',
+            'value': 1,
+            'debug_mode': true
+          });
+          break;
+            case 'electronics' : 
+            gtag('filter_changed_electronics', 'changed', {
+            'event_category': 'interactions on filter',
+            'event_label': 'changing filter to electronics',
+            'value': 1,
+            'debug_mode': true
+          });
+          break;
+          case 'jewelery' : 
+            gtag('filter_changed_jewelery', 'changed', {
+              'event_category': 'interactions on filter',
+              'event_label': 'changing filter to jewelery',
+              'value': 1,
+              'debug_mode': true
+            });
+            break;
+            case "men's clothing" : 
+            gtag("filter_changed_men_clothing", 'changed', {
+              'event_category': 'interactions on filter',
+              'event_label': "changing filter to men's clothing",
+              'value': 1,
+              'debug_mode': true
+            });
+            break;
+            case "women's clothing" : 
+            gtag("filter_changed_women_clothing", 'changed', {
+                'event_category': 'interactions on filter',
+                'event_label': "changing filter to women's clothing",
+                'value': 1,
+                'debug_mode': true
+              });
+              break; 
+    }
+    
 }
 
 function findCartItemById(id) {
@@ -66,6 +114,12 @@ function findCartItemById(id) {
 }
 
 function addToCart(e) {
+    gtag('add_to_cart', 'button_click', {
+        'event_category': 'interactions on products',
+        'event_label': 'adding products to cart',
+        'value': 1,
+        'debug_mode': true
+      });
     const btnElement = e.target;
     const parentElement = e.target.parentElement;
     let qtyInput = parentElement.querySelector("input");
@@ -149,6 +203,14 @@ function qtyChanged(e) {
 checkoutbtn.addEventListener("click", checkout)
 
 function checkout() {
+
+    gtag('checkout', 'button_click', {
+        'event_category': 'interactions on cart',
+        'event_label': 'checking out',
+        'value': 1,
+        'debug_mode': true
+      });
+
     if (cart.length != 0) {
     alert ("Your purchase was successful!");
     alert ("Your items are on their way to you now!");
