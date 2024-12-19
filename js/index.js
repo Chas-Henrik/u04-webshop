@@ -46,11 +46,11 @@ async function renderProducts() {
         b.price - a.price)
         .map(product => `
         <article class="product">
-            <img class="product-img" src="${product.image}" alt="${product.title}">
-            <h3>${product.title}</h3>
-            <p>${product.description}</p>
-            <p>$${product.price}</p>
-            <input type="number" value="1" min="1" placeholder="Qty">
+            <div class="product-img"><img src="${product.image}" alt="${product.title}"></div>
+            <div class="product-title">${product.title}</div>
+            <div class="product-description">${product.description}</div>
+            <div class="product-price">$${product.price}</div>
+            <input class="product-qty" type="number" value="1" min="1">
             <button data-id="${product.id}" class="add-btn">Add to Cart</button>
         </article>
     `).join("");
